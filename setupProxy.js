@@ -4,42 +4,42 @@ module.exports = function(app) {
     app.use(
         '/api/sites',
         createProxyMiddleware({
-        target: 'http://localhost:8001',
+        target: 'https://gestionsitios.hardpro.store',
         changeOrigin: true,
         })
     );
     app.use(
-        '/api/login',
+        '/api/users/login',
         createProxyMiddleware({
-        target: 'http://localhost:8001',
+        target: 'https://gestionsitios.hardpro.store',
         changeOrigin: true,
         })
     );
     app.use(
-        '/api/register',
+        '/api/users/signup',
         createProxyMiddleware({
-        target: 'http://localhost:8001',
+        target: 'https://gestionsitios.hardpro.store',
         changeOrigin: true,
         })
     );
     app.use(
         '/api/logout',
         createProxyMiddleware({
-        target: 'http://localhost:8001',
+        target: 'https://gestionsitios.hardpro.store',
         changeOrigin: true,
         })
     );
     app.use(
         '/api/user',
         createProxyMiddleware({
-        target: 'http://localhost:8001',
+        target: 'https://gestionsitios.hardpro.store',
         changeOrigin: true,
         })
     );
     app.use(
         '/api/sites/:id',
         createProxyMiddleware({
-        target: 'http://localhost:8001',
+        target: 'https://gestionsitios.hardpro.store',
         changeOrigin: true,
         })
     );

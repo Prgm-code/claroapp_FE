@@ -4,6 +4,7 @@ import axios from 'axios';
 export function getAllSites() {
     return axios.get(`api/sites`,{
         headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
 
             'Content-Type': 'application/json',
            // 'Autorization': `Bearer ${localStorage.getItem('token')}`
@@ -17,6 +18,7 @@ export function getSite(id) {
     return axios.get(`api/sites/${id}`,{
         headers: {
 
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
             'Content-Type': 'application/json',
            //   
         }
@@ -27,6 +29,7 @@ export function getSite(id) {
 export function createSite(site) {
     return axios.post(`api/sites`, site, {
         headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
 
             'Content-Type': 'application/json',
            //
@@ -37,6 +40,7 @@ export function createSite(site) {
 export function updateSite(site) {
     return axios.patch(`api/sites/${site.id}`, site, {
         headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
 
             'Content-Type': 'application/json',
            //
@@ -47,6 +51,7 @@ export function updateSite(site) {
 export function deleteSite(id) {
     return axios.delete(`api/sites/${id}`, {
         headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
 
             'Content-Type': 'application/json',
            //
@@ -55,8 +60,9 @@ export function deleteSite(id) {
 }
 
 export function login(user) {
-    return axios.post(`api/login`, user, {
+    return axios.post(`api/users/login`, user, {
         headers: {
+            
 
             'Content-Type': 'application/json',
            //
@@ -64,9 +70,10 @@ export function login(user) {
     })
 }
 
-export function register(user) {
-    return axios.post(`api/register`, user, {
+export function signup(user) {
+    return axios.post(`api/users/signup`, user, {
         headers: {
+            
 
             'Content-Type': 'application/json',
            //

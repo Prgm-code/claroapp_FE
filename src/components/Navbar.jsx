@@ -1,7 +1,8 @@
+import { Link } from 'react-router-dom';
 
 import logo from '../assets/img/claro.png';
 
-function Navbar() {
+function Navbar({handleLogout , logedIn}) {
     return (
 
         <nav className="navbar bg-light mb-3">
@@ -20,13 +21,29 @@ function Navbar() {
       </div>
       <div className="offcanvas-body">
         <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
-          <li className="nav-item">
+          {
+            logedIn ? ( <>
+              <li className="nav-item">
             <a className="nav-link active" aria-current="page" href="#">Perfil</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Logout</a>
+            <Link to={'/'} className="nav-link" href="#">Listado de Sitios</Link>
           </li>
-          <li className="nav-item dropdown">
+          <li className="nav-item">
+            <a className="nav-link" href="#" onClick={handleLogout}>Logout</a>
+          </li>
+          
+            </>) : ( <>
+              <li className="nav-item">
+            <Link to={'/signup'} className="nav-link" href="#">Registro</Link>
+          </li>
+          <li className="nav-item">
+            <Link to={'/Login'} className="nav-link" href="#">Ingresa</Link>
+          </li>
+            </>)
+          }
+          
+          {/* <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Dropdown
             </a>
@@ -38,7 +55,7 @@ function Navbar() {
               </li>
               <li><a className="dropdown-item" href="#">Something else here</a></li>
             </ul>
-          </li>
+          </li> */}
         </ul>
         <form className="d-flex mt-3" role="search">
           <input className="form-control me-2" type="search" placeholder="Editar Sitio" aria-label="Search" />

@@ -9,7 +9,7 @@ import { KeySite } from './KeySite.jsx';
 
 
 
-export function SiteView({ }) {
+export function SiteView({ handleErrors}) {
 
     const [site, setSite] = useState({});
     const [arrSite, setArrSite] = useState([]);
@@ -41,6 +41,7 @@ export function SiteView({ }) {
             })
             .catch(error => {
                 console.log(error);
+                handleErrors(error);    
 
             })
     }, [id]);
@@ -65,6 +66,7 @@ export function SiteView({ }) {
             })
             .catch(error => {
                 console.log(error);
+                handleErrors(error);
             })
     }
 
