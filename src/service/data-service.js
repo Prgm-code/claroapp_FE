@@ -7,7 +7,7 @@ export function getAllSites() {
             'Authorization': `Bearer ${localStorage.getItem('token')}`,
 
             'Content-Type': 'application/json',
-           // 'Autorization': `Bearer ${localStorage.getItem('token')}`
+         
         }
 
 

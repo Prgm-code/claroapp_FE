@@ -37,7 +37,7 @@ export function KeySite({ item , handleSaveKey }) {
 
     useEffect(() => {
         if (key === "createdAt" || key === "updatedAt") {
-            setValue(new Date(value).toLocaleString());
+            setValue(new Date(value).toLocaleString('es-CL'));
         }
     }, [value]);
 

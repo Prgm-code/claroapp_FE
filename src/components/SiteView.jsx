@@ -56,13 +56,19 @@ export function SiteView({ handleErrors}) {
     }, [site]);
 
     const handleSaveKey = (key, value) => {
-        let newSite = { ...site };
-        newSite[key] = value;
+        if (key ==='IC1' && value.toLowerCase() === "si") {
+            value = true;
+        } else if (key ==='IC1' && value.toLowerCase() === "no") {
+            value = false;
+        }
 
-        updateSite(newSite)
+        let Site = { ...site };
+        Site[key] = value;
+
+        updateSite(Site)
             .then(response => {
                 console.log(response);
-                setSite(newSite)
+                setSite(Site)
             })
             .catch(error => {
                 console.log(error);
