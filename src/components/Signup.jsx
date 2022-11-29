@@ -43,7 +43,7 @@ export function  Signup () {
             })
             .then (response => {
                 console.log(response);
-                setSuccess('Usuario creado exitosamente');
+                setSuccess('Se ha enviado un mail de confirmación a su correo');
                 setEmail('');
                 setPassword('');
                 setPasswordConfirmation('');

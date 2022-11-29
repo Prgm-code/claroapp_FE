@@ -3,18 +3,23 @@ import { Link } from 'react-router-dom';
 import logo from '../assets/img/claro.png';
 
 function Navbar({handleLogout , logedIn}) {
+    
+
+
+
+
     return (
 
-        <nav className="navbar bg-light mb-3">
+        <nav className="navbar navbar-expand-lg bg-light mb-3">
   <div className="container-fluid">
     <div className="navbar-brand" >
     <img src={logo} alt="" width="60" className="d-inline-block align-text-center " id="logo" /> Listado de Sitios
 
     </div>
-    <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+    <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarLg" aria-controls="offcanvasNavbarLg">
       <span className="navbar-toggler-icon"></span>
     </button>
-    <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+    <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasNavbarLg" aria-labelledby="offcanvasNavbarLgLabel">
       <div className="offcanvas-header">
         <h5 className="offcanvas-title" id="offcanvasNavbarLabel">Control Sites</h5>
         <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -24,21 +29,27 @@ function Navbar({handleLogout , logedIn}) {
           {
             logedIn ? ( <>
               <li className="nav-item">
-            <a className="nav-link active" aria-current="page" href="#">Perfil</a>
+            <a className="nav-link active" aria-current="page" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarLg">Perfil (en construcción...)</a>
+          </li>
+          <li className="nav-item ">
+            <Link to={'/'} className="nav-link" href="#" >Listado de Sitios</Link>
           </li>
           <li className="nav-item">
-            <Link to={'/'} className="nav-link" href="#">Listado de Sitios</Link>
+            <Link to={'/createsite'} className="nav-link" href="#"  >Crear Sitio</Link>
           </li>
+         
           <li className="nav-item">
-            <a className="nav-link" href="#" onClick={handleLogout}>Logout</a>
+            <a className="nav-link" href="#" onClick={handleLogout} >Logout</a>
           </li>
+         
           
             </>) : ( <>
               <li className="nav-item">
-            <Link to={'/signup'} className="nav-link" href="#">Registro</Link>
+            <Link to={'/signup'} className="nav-link"   >Registro</Link>
+
           </li>
           <li className="nav-item">
-            <Link to={'/Login'} className="nav-link" href="#">Ingresa</Link>
+            <Link to={'/Login'} className="nav-link" href="#" >Ingresa</Link>
           </li>
             </>)
           }
@@ -57,10 +68,10 @@ function Navbar({handleLogout , logedIn}) {
             </ul>
           </li> */}
         </ul>
-        <form className="d-flex mt-3" role="search">
+        {/* <form className="d-flex mt-3" role="search">
           <input className="form-control me-2" type="search" placeholder="Editar Sitio" aria-label="Search" />
           <button className="btn btn-outline-success" type="submit">Editar</button>
-        </form>
+        </form> */}
       </div>
     </div>
   </div>

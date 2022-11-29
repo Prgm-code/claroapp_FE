@@ -14,6 +14,8 @@ import { SiteView } from './components/SiteView';
 import { Signup } from './components/Signup';
 import decodeJwt from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
+import { CreateSite } from './components/CreateSite';
+
 
 function App() {
   
@@ -90,6 +92,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} setLogedIn={setLogedIn} logedIn={logedIn} handleErrors={handleErrors}/>
         <Route path="/:id" element={<SiteView sites={sites} handleErrors={handleErrors}/>} />
+        <Route path="/createsite" element={<CreateSite  />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
       
