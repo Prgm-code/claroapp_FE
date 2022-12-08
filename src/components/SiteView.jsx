@@ -42,6 +42,7 @@ export function SiteView({ handleErrors}) {
             .catch(error => {
                 console.log(error);
                 handleErrors(error);    
+                // eslint-disable-next-line react-hooks/exhaustive-deps
 
             })
     }, [id]);
