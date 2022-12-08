@@ -34,28 +34,21 @@ export function SiteView({ handleErrors }) {
         setArrSite(result);
 
     }
-    function handleGetSite() {
-        getSite(id)
-            .then(response => {
-                setSite(response.data);
-                handleArrSite(response.data);
-            })
-            .catch(error => {
-                console.log(error);
-                fixedError.current = error;
-                handleErrors(fixedError.current);
-            })
-    }
+   
 
 
 
 
 
     useEffect(() => {
-
-        handleGetSite()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [] );
+        const fetchData = async () => {
+            const result = await getSite(id);
+            setSite(result);
+            handleArrSite(result);
+        }
+        fetchData();
+    
+    }, [id] );
 
 
 
