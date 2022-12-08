@@ -34,7 +34,7 @@ export function SiteView({ handleErrors }) {
         setArrSite(result);
 
     }
-    function handleGetSite(id) {
+    function handleGetSite() {
         getSite(id)
             .then(response => {
                 setSite(response.data);
@@ -53,7 +53,7 @@ export function SiteView({ handleErrors }) {
 
     useEffect(() => {
 
-        handleGetSite(id)
+        handleGetSite()
     }, [id]);
 
 
