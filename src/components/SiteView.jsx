@@ -1,6 +1,6 @@
 import logo from '../assets/img/7.png';
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams } from 'react-router-dom';
 import { getSite, updateSite } from '../service/data-service.js';
 
@@ -9,7 +9,8 @@ import { KeySite } from './KeySite.jsx';
 
 
 
-export function SiteView({ handleErrors}) {
+
+export function SiteView({ handleErrors }) {
 
     const [site, setSite] = useState({});
     const [arrSite, setArrSite] = useState([]);
@@ -17,6 +18,8 @@ export function SiteView({ handleErrors}) {
     const [sitio, setSitio] = useState(site.sitio);
     const [clave, setClave] = useState(site.clave);
     const [direccion, setDireccion] = useState(site.direccion);
+
+    const fixedError = useRef(null);
 
 
 
@@ -41,8 +44,9 @@ export function SiteView({ handleErrors}) {
             })
             .catch(error => {
                 console.log(error);
-                handleErrors(error);    
-                // eslint-disable-next-line react-hooks/exhaustive-deps
+                fixedError.current = error;
+                handleErrors(fixedError.current);    
+               
 
             })
     }, [id]);
