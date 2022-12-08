@@ -54,6 +54,7 @@ export function SiteView({ handleErrors }) {
     useEffect(() => {
 
         handleGetSite()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [] );
 
 
