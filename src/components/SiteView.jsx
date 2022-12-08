@@ -34,9 +34,7 @@ export function SiteView({ handleErrors }) {
         setArrSite(result);
 
     }
-
-
-    useEffect(() => {
+    function handleGetSite(id) {
         getSite(id)
             .then(response => {
                 setSite(response.data);
@@ -45,10 +43,17 @@ export function SiteView({ handleErrors }) {
             .catch(error => {
                 console.log(error);
                 fixedError.current = error;
-                handleErrors(fixedError.current);    
-               
-
+                handleErrors(fixedError.current);
             })
+    }
+
+
+
+
+
+    useEffect(() => {
+
+        handleGetSite(id)
     }, [id]);
 
 
@@ -61,9 +66,9 @@ export function SiteView({ handleErrors }) {
     }, [site]);
 
     const handleSaveKey = (key, value) => {
-        if (key ==='IC1' && value.toLowerCase() === "si") {
+        if (key === 'IC1' && value.toLowerCase() === "si") {
             value = true;
-        } else if (key ==='IC1' && value.toLowerCase() === "no") {
+        } else if (key === 'IC1' && value.toLowerCase() === "no") {
             value = false;
         }
 
