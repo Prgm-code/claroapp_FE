@@ -19,7 +19,7 @@ export function SiteView({ handleErrors }) {
     const [clave, setClave] = useState(site.clave);
     const [direccion, setDireccion] = useState(site.direccion);
 
-    const fixedError = useRef(null);
+    const fixedError = useRef();
 
 
 
