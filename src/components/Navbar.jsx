@@ -32,10 +32,10 @@ function Navbar({handleLogout , logedIn}) {
             <a className="nav-link active" aria-current="page" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarLg">Perfil (en construcción...)</a>
           </li>
           <li className="nav-item ">
-            <Link to={'/'} className="nav-link" href="#" >Listado de Sitios</Link>
+            <a  className="nav-link" href="/" >Listado de Sitios</a>
           </li>
           <li className="nav-item">
-            <Link to={'/createsite'} className="nav-link" href="#"  >Crear Sitio</Link>
+            <a className="nav-link" href="/createsite"  >Crear Sitio</a>
           </li>
          
           <li className="nav-item">
@@ -49,7 +49,7 @@ function Navbar({handleLogout , logedIn}) {
 
           </li>
           <li className="nav-item">
-            <Link to={'/Login'} className="nav-link" href="#" >Ingresa</Link>
+            <a className="nav-link" href="/Login" >Ingresa</a>
           </li>
             </>)
           }

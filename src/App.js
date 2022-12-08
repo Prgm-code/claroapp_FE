@@ -32,7 +32,7 @@ function App() {
 
   
   useEffect(() => {
-    if (!token) return navigate('/login');
+    
 
     setLoading(true); 
     getAllSites()
