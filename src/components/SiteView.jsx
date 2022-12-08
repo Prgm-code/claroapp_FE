@@ -1,6 +1,6 @@
 import logo from '../assets/img/7.png';
 import { Link } from 'react-router-dom';
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import { getSite, updateSite } from '../service/data-service.js';
 
@@ -9,8 +9,7 @@ import { KeySite } from './KeySite.jsx';
 
 
 
-
-export function SiteView({ handleErrors }) {
+export function SiteView({ handleErrors}) {
 
     const [site, setSite] = useState({});
     const [arrSite, setArrSite] = useState([]);
@@ -18,8 +17,6 @@ export function SiteView({ handleErrors }) {
     const [sitio, setSitio] = useState(site.sitio);
     const [clave, setClave] = useState(site.clave);
     const [direccion, setDireccion] = useState(site.direccion);
-
-    const fixedError = useRef();
 
 
 
@@ -34,21 +31,20 @@ export function SiteView({ handleErrors }) {
         setArrSite(result);
 
     }
-   
-
-
-
 
 
     useEffect(() => {
-        const fetchData = async () => {
-            const result = await getSite(id);
-            setSite(result);
-            handleArrSite(result);
-        }
-        fetchData();
-    
-    }, [id] );
+        getSite(id)
+            .then(response => {
+                setSite(response.data);
+                handleArrSite(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+                handleErrors(error);    
+
+            })
+    }, [id]);
 
 
 
@@ -60,9 +56,9 @@ export function SiteView({ handleErrors }) {
     }, [site]);
 
     const handleSaveKey = (key, value) => {
-        if (key === 'IC1' && value.toLowerCase() === "si") {
+        if (key ==='IC1' && value.toLowerCase() === "si") {
             value = true;
-        } else if (key === 'IC1' && value.toLowerCase() === "no") {
+        } else if (key ==='IC1' && value.toLowerCase() === "no") {
             value = false;
         }
 
