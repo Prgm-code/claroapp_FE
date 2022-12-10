@@ -1,30 +1,46 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
 name: ClaroApp
 
 on:
   push:
     branches: [ "main" ]
-
+  workflow_dispatch:
 
 jobs:
-  build:
-
-    runs-on: self-hosted
-
-    strategy:
-      matrix:
-        node-version: [ 16.x ]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
+  Docker:
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm i
-    - run: npm run build --if-present
-
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.17.0
+      
+      - name: setup git config
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+      
+      - name: Dependecies
+        run: npm i
+      
+      - name: Build
+        run: npm run build
+        
+      - name: Save version
+        id: version
+        run: echo ::set-output name=tag::$(echo $(node -p -e "require('./package.json').version"))
+        
+      - name: Increase version
+        run: npm version patch
+        
+      - name: Push new version
+        run: git push
+      
+      - name: Login to DockerHub Registry
+        run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+        
+      - name: Build Docker image
+        run: docker build . --file Dockerfile --tag hardpro/claroapp:${{steps.version.outputs.tag}}
+        
+      - name: Push to Docker Hub
+        run: docker push hardpro/claroapp:${{steps.version.outputs.tag}}
