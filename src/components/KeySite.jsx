@@ -65,6 +65,13 @@ export function KeySite({ item , handleSaveKey }) {
                            
 
                          />
+                         <i className="fa-regular fa-square-check fa-2x" onClick={
+                            e => {
+                                e.preventDefault();
+                                handleSaveKey(key, value);
+                                handleEdit();
+                            }
+                         }></i>
                     </form>
 
 
