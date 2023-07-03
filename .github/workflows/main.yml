@@ -26,6 +26,10 @@ jobs:
       - name: Build
         run: npm run build
         
+      - name: Overwrite manifest.json
+        run: cp public/manifest.json build/manifest.json
+
+        
       - name: Save version
         id: version
         run: echo ::set-output name=tag::$(echo $(node -p -e "require('./package.json').version"))
