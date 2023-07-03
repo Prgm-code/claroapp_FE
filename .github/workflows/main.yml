@@ -1,4 +1,3 @@
-
 name: ClaroApp
 
 on:
@@ -28,8 +27,10 @@ jobs:
         
       - name: Overwrite manifest.json
         run: cp public/manifest.json build/manifest.json
+      
+      - name: Print manifest.json
+        run: cat build/manifest.json
 
-        
       - name: Save version
         id: version
         run: echo ::set-output name=tag::$(echo $(node -p -e "require('./package.json').version"))
