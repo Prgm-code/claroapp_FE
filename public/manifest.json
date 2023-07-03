@@ -1,5 +1,5 @@
 {
-  "short_name": "Claro Clave APP",
+  "short_name": "Gestión Sitios",
   "name": "Aplicacion de claves y datos de Sitios",
   "icons": [
     {
@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "claro.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "claro.png",
       "type": "image/png",
       "sizes": "512x512"
     }
